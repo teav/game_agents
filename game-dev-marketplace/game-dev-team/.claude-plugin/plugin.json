@@ -1,0 +1,11 @@
+{
+  "name": "game-dev-team",
+  "version": "0.1.0",
+  "description": "A 17-agent team for driving game development from concept to MVP. Framework-neutral Conceptual Tier and stack-specific Platform Tier connected by a System Spec contract, each tier with its own adversaries. Designed for platform portability — start in Phaser/Bun/Vite/TS, migrate to Godot or native without rewriting design artifacts.",
+  "author": {
+    "name": "your-name"
+  },
+  "keywords": ["game-dev", "multi-agent", "phaser", "godot", "mvp"],
+  "homepage": "",
+  "license": "MIT"
+}

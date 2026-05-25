@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "game-dev-marketplace",
+  "version": "0.1.0",
+  "description": "Plugins for multi-agent game development workflows. Currently hosts the game-dev-team plugin; future plugins (e.g., web-dev-team, mobile-app-team) will be added under the same install root.",
+  "owner": {
+    "name": "your-name",
+    "email": "your@email.example"
+  },
+  "plugins": [
+    {
+      "name": "game-dev-team",
+      "description": "A 17-agent team for driving game development from concept to MVP. Framework-neutral Conceptual Tier and stack-specific Platform Tier connected by a System Spec contract, each tier with its own adversaries.",
+      "source": "./game-dev-team",
+      "version": "0.1.0",
+      "category": "development",
+      "keywords": ["game-dev", "multi-agent", "phaser", "godot", "mvp"]
+    }
+  ]
+}
