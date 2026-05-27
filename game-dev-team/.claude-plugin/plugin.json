@@ -6,6 +6,6 @@
     "name": "your-name"
   },
   "keywords": ["game-dev", "multi-agent", "phaser", "godot", "mvp"],
-  "homepage": "",
+  "homepage": "https://github.com/teav/game_agents",
   "license": "MIT"
 }
