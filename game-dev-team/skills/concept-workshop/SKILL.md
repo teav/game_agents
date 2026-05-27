@@ -1,55 +1,57 @@
 ---
 name: concept-workshop
 description: |
-  Discipline for concept-phase workshop iteration. The parent (not a subagent) uses this skill to iterate fragment → loop → hook → ready-for-GDD in-context. Adversaries do not fire during workshop; they fire at the GDD-draft gate.
+  Concept-phase workshop. The parent iterates a game idea in-context through conversation — no subagents, no files — until the user is ready to formalize.
 
-  Invoke this skill when:
-  - Phase is concept and the user pitches a fragment, idea, or partial concept
-  - User says "let's workshop X", "I have an idea", "help me think about Y"
-  - Currently iterating on a loop or mechanic before formalization
-  - About to promote a workshop product to a formal GDD draft (load promotion criteria)
-  - The user mentions "concept", "pitch", "workshop", "the loop", or "the hook"
+  Invoke when:
+  - User pitches a game idea or fragment
+  - User says "workshop", "concept", "I have an idea", "help me think through"
+  - Currently iterating on a loop or mechanic
+  - About to promote to a formal GDD draft
 ---
 
 # concept-workshop
 
-## When to load what
+## How to run the workshop
 
-| Trigger                                     | Load                                      |
-| ------------------------------------------- | ----------------------------------------- |
-| Starting a workshop on a fresh pitch        | This file (readiness check)               |
-| Pressure-testing a candidate loop           | `references/hook-test.md`                 |
-| About to invoke game-designer to formalize  | `references/promotion-criteria.md`        |
+Workshop is a conversation. You ask, the user answers, the idea sharpens. No documents, no subagents.
 
-## Pitch readiness check
+**Open every session** with a one-line status tracker showing where you are:
 
-Run this on every new pitch before iteration. The pitch needs all three:
+```
+◦ idea  →  ◦ loop  →  ◦ hook  →  ◦ ready
+```
 
-1. **Player verb** — what does the player do?
-2. **Stakes** — why does the player care?
-3. **Loop hint** — what's the rhythm of play?
+Fill in markers as things crystallize:
 
-If any are absent or contradictory: do not iterate, do not propose loops. Ask the user for the missing essentials with one-sentence clarifying questions. Workshop only begins when readiness passes.
+```
+● idea  →  ● loop  →  ◦ hook  →  ◦ ready
+```
 
-## The workshop loop (parent runs this in-context)
+Update the tracker at the top of each response so the user can see progress at a glance.
 
-Once readiness passes, iterate with the user:
+## Your job at each stage
 
-1. **Propose a candidate loop.** Concrete enough to evaluate, vague enough to revise.
-2. **Apply the hook test.** Does this loop have a "one more turn" pull? Load `references/hook-test.md`.
-3. **Critique inline.** What's weak, untested, likely to fall apart.
-4. **Iterate.** Adjust based on user reactions and your own critique. Multiple rounds are expected.
-5. **Stop when the loop has a hook.** A clear "one more turn" mechanism, a stake the player cares about, and a rhythm that survives the first imagined hour of play.
+**◦ idea** — Understand what the player does and why they care. Don't ask multiple questions at once. Pick the most important gap, ask it, wait for the answer, then move.
 
-## Rules during workshop
+**◦ loop** — Propose one candidate loop: concrete enough to react to, loose enough to revise. Then apply one critique. Repeat.
 
-- Adversaries do NOT fire during workshop. The discipline is in this skill; the parent applies it inline. Adversaries fire at the GDD-draft gate.
-- No file artifacts are produced during workshop. Workshop output lives in conversation until promotion.
-- The parent may use `web_search` for landscape spot-checks ("are there games like X?") and `web_fetch` for specific titles the user references. Do not invoke `market-analyst` for this — inline search is sufficient at workshop level.
-- Do not invoke `game-designer`, `systems-architect`, `art-director`, or `narrative` during iteration. Those are dormant in concept phase except for the one game-designer invocation at promotion.
+**◦ hook** — Does the loop have a "one more turn" pull? Load `references/hook-test.md` and apply it. If the hook isn't there, iterate the loop.
 
-## When to promote
+**◦ ready** — Never declare this yourself. Wait for the user to say so.
 
-When the workshop product passes the promotion criteria (see `references/promotion-criteria.md`), invoke `game-designer` once with the workshop product as input. Game-designer writes the formal GDD draft, the PostToolUse hook queues it, and the parent fans out adversaries in parallel for the gate review.
+## Tone
 
-The handoff from workshop to game-designer should include: the candidate loop, the named hook categories, identified reference games, and the bounded open questions.
+Socratic first — ask a sharp question rather than explain or propose. If the user is stuck or the answer is thin, offer a hint: one concrete option to react to, not a list of choices or a lecture. Then get out of the way.
+
+## Rules
+
+- No files written during workshop. Everything lives in conversation.
+- No subagents. You run this in-context.
+- No market-analyst — use `web_search` inline for quick landscape spot-checks.
+- game-designer, systems-architect, art-director, narrative: all dormant until the user promotes.
+- Adversaries don't fire until the GDD-draft gate.
+
+## Promotion
+
+Only when the user explicitly asks to move forward. Load `references/promotion-criteria.md`, then invoke `game-designer` once with: the candidate loop, hook categories, reference games, and open questions.
